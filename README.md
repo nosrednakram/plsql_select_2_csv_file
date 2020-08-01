@@ -6,11 +6,11 @@ At my job we often have a need to generate CSV files for bridging data. For end 
 
 ## Usage
 
-The only required parameter is the query_string which is just a select query. You will generally also want to supply the file _name. **CAUTIION: It will always remove an existing file with that name.** For your purposes I would suggest changing the default directory name to what you use at your organization.   The user will need write access ganted for the directory. If you don't use directories easy enought to google setting up. I addeed a few options with logical default to mange the file output:
+The only required parameter is the **query_string** which is just a select query. You will generally also want to supply the **file_name**. **CAUTIION: It will always remove an existing file with that name.** For your purposes I would suggest changing the default **dir_name** to what you use at your organization.   The user will need write access ganted for the directory. If you don't use directories easy enought to google setting up. I addeed a few options with logical default to mange the file output:
 
-   * seperator: ,
-   * wrap_strings_in: "
-   * include_heading: true
+   * **seperator**: ,
+   * **wrap_string**: "
+   * **include_heading**: true
 
 To set the output date format you should alter the NLS_DATA_FORMAT before calling.
 
@@ -18,4 +18,11 @@ To set the output date format you should alter the NLS_DATA_FORMAT before callin
 
 ## Example 
 
+alter SESSION  set NLS_DATE_FORMAT = 'YYYY-MM-DD';
+begin
+csv_file_from_query_string(
+    query_string => q'#select * from table where column_name = value#',
+    file_name => 'employee.csv'
+    );
+end;
 
