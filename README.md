@@ -17,6 +17,7 @@ To set the output date format you should alter the NLS_DATA_FORMAT before callin
 **ALTER SESSION SET NLS_DATE_FORMAT = 'YYYY-MM-DD';**
 
 ## Example 
+
 '''sql
 alter SESSION  set NLS_DATE_FORMAT = 'YYYY-MM-DD';
 begin
